@@ -28,6 +28,8 @@ TY_DEFAULT_LANG="ru"                #which letter_parts to use
 TY_ADD_ERRORS_TO_ARRAY=yes          #reads $error_file and adds them to @letter_parts      
 TY_NUMBER_LINES_TO_ADD=0            #how many lines to pass after main line
 TY_ASTERISKS_MODE=0                 # ***** instead of plain text
+TY_PREVIOUS_MODE=                   # previous TY_ASTERISKS_MODE
+TY_USER_IMPLICITLY_MODE=            # user has chosen implicitly the mode
 
 en_letter_parts=(
 al an ar as at ax ba bl bq ca ci che cns com cp de ds dis ed en er esh est fin fo gh git gq ha he hg ic ie int io is it kin la le li 

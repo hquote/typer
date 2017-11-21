@@ -462,6 +462,7 @@ function settings_dialog(){
                     show_error_file_content
                     ;;
                 ASTERISKS* )
+                    TY_USER_IMPLICITLY_MODE=yes
                     if (( TY_ASTERISKS_MODE == 0 )) ; then
                         TY_ASTERISKS_MODE=1
                         else 
@@ -519,15 +520,16 @@ function remove_repeating_spaces_from(){
     echo "$line" | tr -s [:blank:]
 }
 function turn_on_off_randomly_asterisks_mode(){
-#Automatically turns on or off ASTERISKS mode each 10th line    
-if  (( number_of_typed_lines % 10 == 0 )); then
-    echo -e "${On_Yellow}*****Please train in ASTERISKS mode $NC\n"
-    TY_PREVIOUS_MODE=${TY_ASTERISKS_MODE}
-    #force asterisks mode!
-    TY_ASTERISKS_MODE=1
-else
-    TY_ASTERISKS_MODE=${TY_PREVIOUS_MODE}   #switch back to user's selected mode
-fi
+#Automatically turns on or off ASTERISKS mode each 10th line   
+[[ "$TY_USER_IMPLICITLY_MODE"  ]] && return
+    if  (( number_of_typed_lines % 10 == 0 )); then
+        echo -e "${On_Yellow}*****Please try ASTERISKS mode as well! $NC\n"
+        TY_PREVIOUS_MODE=${TY_ASTERISKS_MODE}
+        #force asterisks mode!
+        TY_ASTERISKS_MODE=1
+    else
+        TY_ASTERISKS_MODE=${TY_PREVIOUS_MODE}   #switch back to user's selected mode
+    fi
   
 }
 function get_user_input_text(){
