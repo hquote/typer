@@ -429,18 +429,20 @@ function settings_dialog(){
 #general settings which user can call by SET command
     local bar='*************************************************************************'
     clear
+
     echo -e "${Yellow}${bar}${NC}"
     echo "You can configure the following settings for THIS SESSION only:"
     echo -e "${Yellow}${bar}${NC}"
 
     options=(
         "CONTINUE..."
+        "Statistics"        
         "Clear error history" 
          "Show error history"       
         "English" 
         "Russian" 
         "ASTERISKS toggle"
-        "Touchpad enable"
+
       )
 
     select opt in "${options[@]}"
@@ -454,9 +456,8 @@ function settings_dialog(){
                     initialize_letter_parts
                      #break
                     ;;
-                Touchpad* )
-                    TY_DETECT_TOUCHPAD=yes
-                    touchpad disable
+                "Statistics" )
+                    show_statistics ${total_typed_chars} ${total_elapsed} ${best_time}
                     ;;
                 "Show error history" )
                     show_error_file_content
