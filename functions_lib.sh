@@ -200,12 +200,13 @@ function add_letters_from() {
 }
 function trim_error_file(){
 # trim "$error_file"    
-    if  [[ -f "$error_file" ]] ; then
-        local temp=$(mktemp)
-        cp "$error_file"     "$temp"
-        sort "$temp" | uniq -c | sort -k 1n | tr -s ' ' | cut -f 3 -d " " | tail -n10 > "$error_file" 
-        rm -f "$temp"
-    fi
+    clear_existing_file "$error_file"
+    # if  [[ -f "$error_file" ]] ; then
+    #     local temp=$(mktemp)
+    #     cp "$error_file"     "$temp"
+    #     sort "$temp" | uniq -c | sort -k 1n | tr -s ' ' | cut -f 3 -d " " | tail -n10 > "$error_file" 
+    #     rm -f "$temp"
+    # fi
 
 }
 
@@ -452,7 +453,7 @@ function settings_dialog(){
                     #clear_existing_file "$error_file"
                     echo "Error history trimmed!"
                     trim_error_file
-                    
+                    show_error_file_content
                     initialize_letter_parts
                      #break
                     ;;
