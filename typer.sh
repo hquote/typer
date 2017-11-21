@@ -77,7 +77,7 @@ do
     elapsed=$(($SECONDS - $time_stamp))         # measure elapsed time
 
     [[ ${user_text} =~ [Qq]uit ]] &&  break 
-    [[ "$user_text" =~ SET ]] && { settings_dialog  ; continue ; }
+    [[ "$user_text" =~ MENU ]] && { settings_dialog  ; continue ; }
 
     #compare to initial item without comments 
     lex_diff "${item%%#*} " "$user_text"

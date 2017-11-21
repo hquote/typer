@@ -427,7 +427,7 @@ function initialize_letter_parts(){
 }
 
 function settings_dialog(){
-#general settings which user can call by SET command
+#general settings which user can call by MENU command
     local bar='*************************************************************************'
     clear
 
