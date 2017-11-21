@@ -178,11 +178,9 @@ _THIS_SESSION_STATISTICS_
 }
 
 function trap_SIGINT() {
-# is called as a trap for Ctrl-C and shows current session statistics
-    show_statistics ${total_typed_chars} ${total_elapsed} ${best_time}
-    touchpad enable # enable touchpad
+#traps Ctrl-C and resets $best_time and enables touchpad
     best_time=1000  #reset best time
-    echo -e "type ${Blue}SET${NC} to get settings menu or press ${Green}Enter${NC} to continue..."
+    touchpad enable # enable touchpad
 
 }
 
