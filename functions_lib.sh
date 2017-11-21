@@ -671,8 +671,8 @@ function print_elapsed(){
 }
 
 function lex_diff(){
-#returns the number of lexigraphical differencies between two lines
-#empty line if equivalent
+#sets into global $error_counter the number of lexigraphical differencies between two lines
+#NO OUTPUT AT ALL!
     error_counter="0"     #global var
     local line1="$1"
     local line2="$2"
@@ -687,5 +687,5 @@ function lex_diff(){
           [[ "${line1:i:1}" != "${line2:i:1}" ]] && error_counter=$(( error_counter + 1 ))
     done
 
-    echo $error_counter
+  #  echo $error_counter
 }
