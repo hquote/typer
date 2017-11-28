@@ -1,6 +1,6 @@
 #!/bin/bash
 # created by vlad Чт окт 19 11:21:24 MSK 2017
-version="1.65"
+version="1.66"
 progname="$(basename ${0})"
 
 ######################################
